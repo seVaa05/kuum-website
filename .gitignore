@@ -1,0 +1,42 @@
+# Node
+node_modules/
+dist/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Java / Spring Boot - for future backend
+target/
+*.class
+
+# OS
+.DS_Store
+Thumbs.db# Node / React
+node_modules/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# JetBrains IDEs (WebStorm / IntelliJ)
+.idea/
+*.iml
+
+# Java / Spring Boot - for future backend
+target/
+*.class
+
+# OS
+.DS_Store
+Thumbs.db
