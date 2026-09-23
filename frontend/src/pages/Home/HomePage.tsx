@@ -91,7 +91,7 @@ export function HomePage() {
 
       <section className="section">
         <Container>
-          <SectionTitle title="Događaji" action={<div className="tabs"><span>Upcoming Events</span><span>Past Events</span></div>} />
+          <SectionTitle title="Događaji" action={<div className="tabs"><span>All Events</span></div>} />
           <div className="grid grid--3">{upcoming.map((event) => <EventCard key={event.id} event={event} />)}</div>
           {past.length > 0 && <div className="grid grid--2 past-events">{past.map((event) => <EventCard key={event.id} event={event} />)}</div>}
         </Container>

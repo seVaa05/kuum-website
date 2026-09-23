@@ -9,6 +9,20 @@ import { usePageTitle } from '../../hooks/usePageTitle'
 import { contactService } from '../../services/contactService'
 import type { ContactMessage } from '../../types/contact'
 
+const instagramIcon = (
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" />
+  </svg>
+)
+
+const facebookIcon = (
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M14.2 8.2V6.7c0-.72.48-.9.82-.9H17V3h-2.7c-3 0-3.67 2.25-3.67 3.68V8.2H8.7v3.16h1.93V21h3.57v-9.64h2.42L16.95 8.2Z" fill="currentColor" stroke="none" />
+  </svg>
+)
+
 export function ContactPage() {
   usePageTitle('KUUM | Kontakt')
   const [form, setForm] = useState<ContactMessage>({ name: '', phone: '', email: '', message: '' })
@@ -51,6 +65,8 @@ export function ContactPage() {
           <div className="contact-info">
             <p>Beograd, Srbija</p>
             <a className="contact-email" href="mailto:kuum.bg@gmail.com"><Mail size={22} aria-hidden="true" /> kuum.bg@gmail.com</a>
+            <a className="contact-instagram" href="https://www.instagram.com/kuum.rs/" target="_blank" rel="noopener noreferrer" aria-label="KUUM Instagram">{instagramIcon} kuum.rs</a>
+            <a className="contact-facebook" href="https://www.facebook.com/people/KUUM-Kulturno-umetni%C4%8Dko-udru%C5%BEenje-mladih/61564491359717/?locale=sr_RS" target="_blank" rel="noopener noreferrer" aria-label="KUUM Facebook">{facebookIcon} KUUM</a>
             <SocialLinks />
           </div>
           <form className="contact-form" onSubmit={submit} noValidate>
