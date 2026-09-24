@@ -52,7 +52,7 @@ export function PeoplePage() {
         <Container>
           <SectionTitle title="NAŠI ČLANOVI" />
         </Container>
-        <InfiniteMarquee className="members-marquee" label="Naši članovi" reverse>
+        <InfiniteMarquee className="members-marquee" label="Naši članovi">
           {members.filter((member) => member.group === 'CLANOVI').map((member) => <PersonCard key={member.id} member={member} />)}
         </InfiniteMarquee>
       </section>

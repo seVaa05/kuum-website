@@ -10,7 +10,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }
 body {
   margin: 0;
   min-width: 320px;
@@ -87,6 +87,7 @@ main { min-height: 65vh; }
 .grid { display: grid; gap: 24px; }
 .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid > * { min-width: 0; }
 .card, .person-card, .project-card { border: 0; background: var(--white); color: var(--black); }
 .section--dark .card, .section--dark .person-card { background: #151515; color: var(--white); border-color: #333; }
 .media-link { display: block; overflow: hidden; }
@@ -285,6 +286,10 @@ h3 {
   color: var(--black);
 }
 
+.nav-backdrop {
+  display: none;
+}
+
 .hero-section {
   min-height: calc(100vh - 88px);
   background: #fafafa;
@@ -435,14 +440,23 @@ h3 {
 .editorial-card {
   border: 1px solid var(--line);
   background: var(--white);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .editorial-card .card-body {
   padding: 24px;
+  min-width: 0;
 }
 
 .editorial-card h3 {
   text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.editorial-card p,
+.editorial-card .text-link {
+  overflow-wrap: anywhere;
 }
 
 .project-grid {
@@ -705,6 +719,7 @@ h3 {
 
 .partner-logo {
   min-height: 140px;
+  min-width: 0;
 }
 
 .partner-logo img {
@@ -718,6 +733,7 @@ h3 {
   overflow: hidden;
   width: 100%;
   max-width: 100%;
+  --marquee-gap: clamp(28px, 4vw, 60px);
 }
 
 .marquee::before,
@@ -745,6 +761,7 @@ h3 {
   display: flex;
   width: max-content;
   animation: kuum-marquee-left 36s linear infinite;
+  will-change: transform;
 }
 
 .marquee-track--reverse {
@@ -754,22 +771,40 @@ h3 {
 .marquee-group {
   display: flex;
   align-items: stretch;
-  gap: clamp(20px, 4vw, 54px);
-  padding-inline: clamp(10px, 2vw, 24px);
+  gap: var(--marquee-gap);
+  padding-right: var(--marquee-gap);
   flex: 0 0 auto;
 }
 
 .partners-marquee {
   margin-top: 12px;
+  --marquee-gap: clamp(34px, 4.6vw, 64px);
 }
 
 .partners-marquee .partner-logo {
-  flex: 0 0 clamp(160px, 18vw, 240px);
-  min-height: 150px;
+  flex: 0 0 220px;
+  width: 220px;
+  min-height: 172px;
+  padding: 14px;
+  align-content: center;
+  justify-items: center;
+  overflow-wrap: anywhere;
+}
+
+.partners-marquee .partner-logo img {
+  width: 140px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.partners-marquee .partner-logo span {
+  max-width: 190px;
+  line-height: 1.35;
 }
 
 .members-marquee {
   margin-top: -18px;
+  --marquee-gap: clamp(24px, 3vw, 40px);
 }
 
 .members-marquee::before {
@@ -781,12 +816,15 @@ h3 {
 }
 
 .members-marquee .person-card {
-  flex: 0 0 clamp(210px, 22vw, 300px);
-  width: clamp(210px, 22vw, 300px);
+  flex: 0 0 clamp(280px, 21vw, 320px);
+  width: clamp(280px, 21vw, 320px);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .members-marquee .person-card img {
-  height: clamp(260px, 28vw, 360px);
+  width: 100%;
+  height: clamp(330px, 27vw, 390px);
   aspect-ratio: auto;
   object-fit: cover;
 }
@@ -1050,9 +1088,48 @@ h3 {
 
   .nav-links {
     top: 78px;
+    display: flex;
     background: var(--white);
     color: var(--black);
     box-shadow: 0 12px 24px rgba(0, 0, 0, .08);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition:
+      opacity 250ms ease,
+      transform 250ms ease,
+      visibility 250ms ease;
+    z-index: 31;
+  }
+
+  .nav-links--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-backdrop {
+    position: fixed;
+    inset: 78px 0 0;
+    display: block;
+    border: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, .25);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 250ms ease,
+      visibility 250ms ease;
+    z-index: 30;
+  }
+
+  .nav-backdrop--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .nav-links a {
@@ -1067,6 +1144,8 @@ h3 {
   }
 
   .project-grid,
+  .grid--3,
+  .grid--2,
   .founders-grid,
   .members-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1103,6 +1182,8 @@ h3 {
   }
 
   .project-grid,
+  .grid--3,
+  .grid--2,
   .founders-grid,
   .board-grid,
   .members-grid,
@@ -1145,6 +1226,43 @@ h3 {
 
   .fc {
     min-width: 560px;
+  }
+
+  .featured,
+  .featured > * {
+    min-width: 0;
+  }
+
+  .partners-marquee {
+    --marquee-gap: 26px;
+  }
+
+  .partners-marquee .partner-logo {
+    flex-basis: 174px;
+    width: 174px;
+    min-height: 144px;
+  }
+
+  .partners-marquee .partner-logo img {
+    width: 112px;
+    height: 78px;
+  }
+
+  .partners-marquee .partner-logo span {
+    max-width: 150px;
+  }
+
+  .members-marquee {
+    --marquee-gap: 22px;
+  }
+
+  .members-marquee .person-card {
+    flex-basis: 236px;
+    width: 236px;
+  }
+
+  .members-marquee .person-card img {
+    height: 286px;
   }
 }
 
