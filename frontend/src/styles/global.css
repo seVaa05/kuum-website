@@ -55,7 +55,7 @@ main { min-height: 65vh; }
 .site-header { position: sticky; top: 0; z-index: 20; background: #111; border-bottom: 1px solid #252525; }
 .navbar { width: min(1180px, calc(100% - 28px)); margin: 0 auto; min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--white); }
-.brand img { width: 42px; height: 42px; object-fit: cover; border: 1px solid #fff; }
+.brand img { width: 42px; height: 42px; object-fit: contain; border: 1px solid #fff; }
 .nav-links { display: flex; align-items: center; gap: 18px; font-size: .78rem; text-transform: none; letter-spacing: 0; color: var(--white); }
 .nav-links a { position: relative; padding: 8px 0; }
 .nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .2s ease; }
@@ -73,7 +73,7 @@ main { min-height: 65vh; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 390px); gap: clamp(36px, 8vw, 96px); align-items: center; }
 .hero-kicker { font-size: clamp(1.3rem, 3vw, 2.6rem); font-weight: 400; margin-top: 8px; }
 .hero-subtitle { font-size: clamp(1.45rem, 3vw, 2.45rem); font-weight: 700; margin-top: 22px; }
-.hero-logo { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.hero-logo { width: 100%; aspect-ratio: 1; object-fit: contain; }
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: start; }
 .split--image { align-items: center; }
 .split--image img { border: 1px solid currentColor; aspect-ratio: 4/3; object-fit: cover; }
@@ -268,7 +268,7 @@ h3 {
   height: 66px;
   border: 0;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -338,6 +338,20 @@ h3 {
   border-radius: 50%;
   box-shadow: none;
   background: var(--white);
+  object-fit: contain;
+}
+
+.brand img,
+.hero-logo,
+.history-logo,
+.contact-logo {
+  object-fit: contain;
+}
+
+.split--image img.history-logo,
+.split--image img.contact-logo {
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 
 .page-header {
@@ -701,6 +715,8 @@ h3 {
 .history-logo {
   border-radius: 50%;
   background: var(--white);
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 
 .section--partners {
@@ -843,6 +859,7 @@ h3 {
   width: min(380px, 80vw);
   justify-self: center;
   border-radius: 50%;
+  object-fit: contain;
 }
 
 .contact-grid {
