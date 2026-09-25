@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '../App'
-import { AboutPage } from '../pages/About/AboutPage'
 import { BlogDetailsPage } from '../pages/BlogDetails/BlogDetailsPage'
 import { BlogPage } from '../pages/Blog/BlogPage'
 import { ContactPage } from '../pages/Contact/ContactPage'
@@ -21,7 +20,6 @@ export const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'o-nama', element: <AboutPage /> },
       { path: 'blog', element: <BlogPage /> },
       { path: 'blog/:slug', element: <BlogDetailsPage /> },
       { path: 'podcast', element: <PodcastsPage /> },

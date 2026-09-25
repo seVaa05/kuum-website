@@ -5,7 +5,6 @@ import { images } from '../../data/images'
 
 const links = [
   { to: '/', label: 'Početna' },
-  { to: '/o-nama', label: 'O Nama' },
   { to: '/blog', label: 'KUUM Blog' },
   { to: '/podcast', label: 'KUP - Kulturno-Umetnički Podcast' },
   { to: '/dogadjaji', label: 'Događaji' },

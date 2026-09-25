@@ -56,7 +56,6 @@ export function HomePage() {
             <p className="hero-subtitle">Organizuj i stvaraj !</p>
             <div className="button-row">
               <Link className="button" to="/kontakt">Pridruži nam se</Link>
-              <Link className="button button--outline" to="/o-nama">O nama</Link>
             </div>
           </div>
           <img className="hero-logo" src={images.logo} alt="KUUM logo" />
