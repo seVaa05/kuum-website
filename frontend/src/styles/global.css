@@ -147,7 +147,6 @@ main { min-height: 65vh; }
 .contact-info { display: grid; gap: 18px; }
 .social-list { display: grid; gap: 10px; margin-top: 12px; }
 .social-list a { display: flex; align-items: center; gap: 10px; }
-.map-placeholder { min-height: 180px; border: 1px solid var(--black); display: grid; place-items: center; padding: 24px; text-align: center; font-family: var(--serif); font-size: 1.4rem; background: var(--off); }
 .contact-form { display: grid; gap: 18px; }
 .contact-form label { display: grid; gap: 7px; font-weight: 700; }
 .contact-form input, .contact-form textarea { width: 100%; border: 1px solid var(--black); padding: 13px 14px; background: var(--white); border-radius: 0; }
@@ -773,6 +772,7 @@ h3 {
   width: 100%;
   max-width: 100%;
   --marquee-gap: clamp(28px, 4vw, 60px);
+  --marquee-shift: -25%;
 }
 
 .marquee::before,
@@ -934,22 +934,6 @@ h3 {
   width: 100%;
   min-height: 54px;
   font-size: .92rem;
-}
-
-.map-placeholder {
-  display: none;
-}
-
-.map-section {
-  width: 100%;
-  min-height: 100vh;
-}
-
-.map-section iframe {
-  display: block;
-  width: 100%;
-  height: 100vh;
-  border: 0;
 }
 
 .social-links {
@@ -1422,13 +1406,13 @@ h3 {
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(var(--marquee-shift));
   }
 }
 
 @keyframes kuum-marquee-right {
   from {
-    transform: translateX(-50%);
+    transform: translateX(var(--marquee-shift));
   }
 
   to {

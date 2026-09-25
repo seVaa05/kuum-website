@@ -81,14 +81,6 @@ export function ContactPage() {
           </form>
         </Container>
       </section>
-      <section className="map-section" aria-label="Google mapa">
-        <iframe
-          title="Google mapa"
-          src="https://www.google.com/maps?q=Belgrade%2C%20Serbia&output=embed"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </section>
     </>
   )
 }
