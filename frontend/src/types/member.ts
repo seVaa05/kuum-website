@@ -1,4 +1,4 @@
-export type MemberGroup = 'OSNIVACI' | 'UPRAVNI_ODBOR' | 'CLANOVI'
+export type MemberGroup = 'OSNIVACI' | 'PREDSEDNIK' | 'UMETNICKI_SAVET' | 'UPRAVNI_ODBOR' | 'CLANOVI'
 
 export interface Member {
   id: string

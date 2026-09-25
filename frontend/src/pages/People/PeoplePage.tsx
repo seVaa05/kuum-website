@@ -20,6 +20,10 @@ export function PeoplePage() {
 
   if (!members) return <LoadingState />
 
+  const president = members.find((member) => member.group === 'PREDSEDNIK')
+  const artisticCouncil = members.filter((member) => member.group === 'UMETNICKI_SAVET')
+  const regularMembers = members.filter((member) => member.group === 'CLANOVI')
+
   return (
     <>
       <PageHeader title="LJUDI KUUM-A" description="Udruženje čine ljudi koji pišu, režiraju, vode programe, organizuju događaje i grade publiku." />
@@ -38,14 +42,18 @@ export function PeoplePage() {
       </section>
       <section className="section people-section">
         <Container>
-          <SectionTitle title="OSNIVAČI" />
-          <div className="people-grid founders-grid">{members.filter((member) => member.group === 'OSNIVACI').map((member) => <PersonCard key={member.id} member={member} />)}</div>
+          <SectionTitle title="PREDSEDNIK" />
+          {president && (
+            <div className="president-feature">
+              <PersonCard member={president} />
+            </div>
+          )}
         </Container>
       </section>
       <section className="section section--dark people-section">
         <Container>
-          <SectionTitle title="UPRAVNI ODBOR" />
-          <div className="people-grid board-grid">{members.filter((member) => member.group === 'UPRAVNI_ODBOR').map((member) => <PersonCard key={member.id} member={member} />)}</div>
+          <SectionTitle title="UMETNIČKI SAVET" />
+          <div className="people-grid artistic-council-grid">{artisticCouncil.map((member) => <PersonCard key={member.id} member={member} />)}</div>
         </Container>
       </section>
       <section className="section people-section">
@@ -53,7 +61,7 @@ export function PeoplePage() {
           <SectionTitle title="NAŠI ČLANOVI" />
         </Container>
         <InfiniteMarquee className="members-marquee" label="Naši članovi">
-          {members.filter((member) => member.group === 'CLANOVI').map((member) => <PersonCard key={member.id} member={member} />)}
+          {regularMembers.map((member) => <PersonCard key={member.id} member={member} />)}
         </InfiniteMarquee>
       </section>
     </>

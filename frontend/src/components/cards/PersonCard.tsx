@@ -8,7 +8,7 @@ export function PersonCard({ member }: { member: Member }) {
         <h3>{member.firstName} {member.lastName}</h3>
         <span className="card-rule" aria-hidden="true" />
         <p className="tag">{member.role}</p>
-        <p>{member.biography}</p>
+        {member.biography && <p>{member.biography}</p>}
       </div>
     </article>
   )

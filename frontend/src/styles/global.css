@@ -649,6 +649,23 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.president-feature {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.president-feature .person-card h3 {
+  font-size: clamp(1.55rem, 2.2vw, 2rem);
+}
+
+.president-feature .person-card img {
+  max-height: 440px;
+}
+
+.artistic-council-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .board-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -1170,6 +1187,7 @@ h3 {
   .site123-blog-list,
   .grid--3,
   .grid--2,
+  .artistic-council-grid,
   .founders-grid,
   .members-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1209,6 +1227,7 @@ h3 {
   .site123-blog-list,
   .grid--3,
   .grid--2,
+  .artistic-council-grid,
   .founders-grid,
   .board-grid,
   .members-grid,
